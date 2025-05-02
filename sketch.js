@@ -38,9 +38,16 @@ function Robot(colour, transmitting, name, rotation) {
 
   var rotationSlider = createSlider(0, 360, 0);
   rotationSlider.parent(controlsDiv);
+  var rotationUpdate = function () {
+    self.rotation = this.value();
+  };
+  rotationSlider.input(rotationUpdate);
 
   var nameText = createInput("marvin");
   nameText.parent(controlsDiv);
+  nameText.input(function () {
+    self.name = this.value();
+  });
 
   var colourSelect = createSelect();
   var colourOptions = ["grey", "brown", "red", "green", "yellow", "purple"];
