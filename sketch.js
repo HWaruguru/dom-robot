@@ -33,7 +33,6 @@ function Robot(colour, transmitting, name, rotation) {
   var transmitButton = createButton("transmit");
   transmitButton.parent(controlsDiv);
   transmitButton.mousePressed(function () {
-    
     self.transmitting = !self.transmitting;
   });
 
@@ -49,6 +48,10 @@ function Robot(colour, transmitting, name, rotation) {
   for (var i = 0; i < colourOptions.length; i++) {
     colourSelect.option(colourOptions[i]);
   }
+
+  colourSelect.input(function () {
+    self.colour = this.value();
+  });
   colourSelect.parent(controlsDiv);
 
   this.drawRobot = function () {
